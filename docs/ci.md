@@ -1,5 +1,4 @@
-To enable CI/CD for jcentner.com, created a deployment key for the instance to use to pull the repo. Symbolic links allow the repo to be source.
-To automate, create custom shell for a new user. The shell only supports 'git pull' and the user can only access that shell. Then, use a github action to ssh into the server as that user and pull.
+Created a deployment key for the instance to use to pull the repo. Symbolic links in /etc/nginx allow the repo to be source.
 
 github deploy key
 - created with ssh-keygen
@@ -8,3 +7,9 @@ github deploy key
 
 on merge to main, pull repo from instance
 - ensure ssh-agent running: eval `ssh-agent -s`
+
+
+To automate (I may do this later):
+- create custom shell that can only 'git pull'
+- create new user that can only use that shell
+- use a github action to ssh into the server as that user and pull

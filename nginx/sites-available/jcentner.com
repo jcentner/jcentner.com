@@ -3,7 +3,7 @@
 
 server {
 
-	root /var/www/html;
+	root ~/jcentner.com/html/;
 
 	index index.html index.htm index.nginx-debian.html;
 	server_name www.jcentner.com jcentner.com; # managed by Certbot
