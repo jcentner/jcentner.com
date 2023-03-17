@@ -11,7 +11,7 @@ server {
 
 	location / {
 		# First attempt to serve request as file, then
-		# as directory, then fall back to displaying a 404.
+		# index, so no directory access. Should never get 404
 		try_files $uri /index.html =404;
 	}
 
@@ -23,6 +23,9 @@ server {
 
 	listen [::]:443 ssl ipv6only=on; # managed by Certbot
 	listen 443 ssl; # managed by Certbot
+
+	# Certbot SSL/HTTPS termination 
+
 	ssl_certificate /etc/letsencrypt/live/jcentner.com/fullchain.pem; # managed by Certbot
 	ssl_certificate_key /etc/letsencrypt/live/jcentner.com/privkey.pem; # managed by Certbot
 	include /etc/letsencrypt/options-ssl-nginx.conf; # managed by Certbot
