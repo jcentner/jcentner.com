@@ -40,7 +40,7 @@ server {
 		proxy_set_header		X-Forwarded-Proto $scheme;
 
 		proxy_pass				http://localhost:9001;
-		proxy_read_timeout		90
+		proxy_read_timeout		90;
 	}
 
 
