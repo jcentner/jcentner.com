@@ -6,8 +6,6 @@ server {
 	listen 80 ; # always route http to https
 	listen [::]:80 ;
 	server_name www.jcentner.com jcentner.com;
-	return 404;
-
 
     if ($host = www.jcentner.com) {
         return 301 https://$host$request_uri;
@@ -27,7 +25,6 @@ server {
 
 	index index.html 
 	server_name www.jcentner.com jcentner.com;
-
 
 	location / {
 		# First attempt to serve request as file, then page,
@@ -55,4 +52,6 @@ server {
 	ssl_dhparam /etc/letsencrypt/ssl-dhparams.pem; # managed by Certbot
 
 	access_log		/var/log/nginx/jcentner.com.access.log;
+	error_log		/var/log/nginx/jcentner.com.error.log;
+	error_page 404 /index.html;
 }
