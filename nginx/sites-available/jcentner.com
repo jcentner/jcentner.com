@@ -35,9 +35,6 @@ server {
 		try_files $uri $uri.html /index.html =404;
 	}
 
-	location /index.html {
-		expires 30s;
-	}
 
 	# Certbot SSL/HTTPS termination 
 
