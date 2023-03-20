@@ -6,7 +6,7 @@ server {
 	listen 80 ; # always route http to https
 	listen [::]:80 ;
 	server_name www.jcentner.com jcentner.com;
-	return 301 https://$host$request_url;	
+	return 301 https://$host$request_uri;	
 
     if ($host = www.jcentner.com) {
         return 301 https://$host$request_uri;
