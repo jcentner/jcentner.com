@@ -28,7 +28,7 @@ server {
 
 	location / {
 		# try file, dir, page, then revert to index
-		try_files $uri $uri/ $uri.html /index.html;
+		try_files $uri $uri/ $uri.html =404;
 	}
 
 	location /api {
