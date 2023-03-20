@@ -8,8 +8,8 @@ github deploy key
 on merge to main, pull repo from instance
 - ensure ssh-agent running: eval `ssh-agent -s`
 
-
 To automate (I may do this later):
 - create custom shell that can only 'git pull'
 - create new user that can only use that shell
 - use a github action to ssh into the server as that user and pull
+- also probably a good idea to plug in Circle CI on github for merges to main
