@@ -27,9 +27,8 @@ server {
 	server_name www.jcentner.com jcentner.com;
 
 	location / {
-		# First attempt to serve request as file, then page,
-		# then default to index; no directory access.
-		try_files $uri $uri.html /index.html;
+		# try file, dir, page, then revert to index
+		try_files $uri $uri/ $uri.html /index.html;
 	}
 
 	location /api {
@@ -53,5 +52,5 @@ server {
 
 	access_log		/var/log/nginx/jcentner.com.access.log;
 	error_log		/var/log/nginx/jcentner.com.error.log;
-	error_page 404 /index.html;
+	error_page 404 =200 /index.html;
 }
