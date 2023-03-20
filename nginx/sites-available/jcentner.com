@@ -22,13 +22,17 @@ server {
 	listen [::]:443 ssl ipv6only=on; 
 	listen 443 ssl; 
 
-	root /home/ubuntu/jcentner.com/html/;
+	root /home/ubuntu/jcentner.com/html;
 
 	index index.html;
 	server_name www.jcentner.com jcentner.com;
 
 	location / {
 		try_files $uri $uri/ $uri.html /index.html;
+	}
+
+	location /index.html {
+		expires 30s;
 	}
 
 	location /api {
