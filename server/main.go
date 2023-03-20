@@ -7,7 +7,7 @@ import (
 	"os"
 
 	"github.com/gin-gonic/gin"
-	"github.com/gin-contrib/static"
+	//"github.com/gin-contrib/static"
 	"github.com/pschlump/dbgo"
 )
 
@@ -18,7 +18,7 @@ func main() {
 	// ----------------------------------------------------------------------
 	// CLI Arguments
 	// ----------------------------------------------------------------------
-	
+
 	// help message
 	flag.Usage = func() {
 		fmt.Fprintf(os.Stderr, "stats-tracker: Usage: %s [flags]\n", os.Args[0])
@@ -28,7 +28,7 @@ func main() {
 	flag.Parse()
 
 	fns := flag.Args()
-	if lens(fns) != 0 {
+	if len(fns) != 0 {
 		fmt.Printf("CLI arguments are not supported: [%s]\n", fns)
 		os.Exit(1)
 	}
@@ -37,17 +37,16 @@ func main() {
 	r := gin.Default()
 	// r.Use(static.Serve("/", static.LocalFile(*Dir, false)	// not serving files
 
-	
 	// ----------------------------------------------------------------------
-	// API: /status, 
+	// API: /status,
 	// ----------------------------------------------------------------------
-	
+
 	r.GET("/api/v1/status", func(c *gin.Context) { // anon inline function
-		c.Status(http.StatusOk)
+		c.Status(http.StatusOK)
 		c.Header("Content-Type", "application/json; charset=utf-8")
-		c.String(http.StatusOk, dbgo.SVarI(c))
+		c.String(http.StatusOK, dbgo.SVarI(c))
 	})
-	
+
 	// ----------------------------------------------------------------------
 	r.Run(*HostPort) // listen and serve on HostPort (0.0.0.0:9001)
 }
