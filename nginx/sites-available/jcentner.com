@@ -30,9 +30,20 @@ server {
 
 
 	location / {
-		# First attempt to serve request as file, then
-		# index, so no directory access. Should never get 404
-		try_files $uri $uri.html /index.html =404;
+		# First attempt to serve request as file, then page,
+		# then default to index; no directory access.
+		try_files $uri $uri.html /index.html;
+	}
+
+	location /api {
+
+		proxy_set_header		Host $host;
+		proxy_set_header		X-Real-IP $remote_addr;
+		proxy_set_header		X-Forwarded-For $proxy_add_x_forwarded_for;
+		proxy_set_header		X-Forwarded-Proto $scheme;
+
+		proxy_pass				http://localhost:9001;
+		proxy_read_timeout		90
 	}
 
 
@@ -43,6 +54,5 @@ server {
 	include /etc/letsencrypt/options-ssl-nginx.conf; # managed by Certbot
 	ssl_dhparam /etc/letsencrypt/ssl-dhparams.pem; # managed by Certbot
 
-	access_log /var/log/nginx/jcentner.com.access.log;
-
+	access_log		/var/log/nginx/jcentner.com.access.log;
 }
