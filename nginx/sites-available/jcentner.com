@@ -21,14 +21,13 @@ server {
 	listen [::]:443 ssl ipv6only=on; 
 	listen 443 ssl; 
 
-	root ~/jcentner.com/html/;
+	root /home/jcentner.com/html/;
 
-	index index.html 
+	index index.html;
 	server_name www.jcentner.com jcentner.com;
 
 	location / {
-		# try file, dir, page, then revert to index
-		try_files $uri $uri/ $uri.html =404;
+		try_files $uri $uri/ $uri.html /index.html;
 	}
 
 	location /api {
@@ -52,5 +51,4 @@ server {
 
 	access_log		/var/log/nginx/jcentner.com.access.log;
 	error_log		/var/log/nginx/jcentner.com.error.log;
-	error_page 404 =200 /index.html;
 }
