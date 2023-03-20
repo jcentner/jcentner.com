@@ -8,3 +8,6 @@ run:
 	go build -o stats-tracker
 	./kill-stats-tracker
 	./stats-tracker &
+
+tidy:
+	go mod tidy

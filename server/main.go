@@ -7,11 +7,12 @@ import (
 	"os"
 
 	"github.com/gin-gonic/gin"
-	//"github.com/gin-contrib/static"
 	"github.com/pschlump/dbgo"
 )
 
 var HostPort = flag.String("hostport", ":9001", "Host/Port to listen on")
+
+//var Dir = flag.String("dir", "./www", "Directory from which to serve static assets")
 
 func main() {
 
@@ -35,7 +36,7 @@ func main() {
 
 	// router setup
 	r := gin.Default()
-	// r.Use(static.Serve("/", static.LocalFile(*Dir, false)	// not serving files
+	// r.Use(static.Serve("/", static.LocalFile(*Dir, false))) // not serving files
 
 	// ----------------------------------------------------------------------
 	// API: /status,
