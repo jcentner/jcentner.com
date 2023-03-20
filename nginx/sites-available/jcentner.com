@@ -25,7 +25,7 @@ server {
 
 	root ~/jcentner.com/html/;
 
-	index index.html index.htm index.nginx-debian.html;
+	index index.html 
 	server_name www.jcentner.com jcentner.com;
 
 
