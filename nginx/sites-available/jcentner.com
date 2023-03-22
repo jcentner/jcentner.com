@@ -4,25 +4,26 @@
 server {
 
 	listen 80 ; # always route http to https
-	listen [::]:80 ;
+	# listen [::]:80 ; # enable for ipv6
 	server_name www.jcentner.com jcentner.com;
-	return 301 https://$host$request_uri;	
+	return 302 https://$host$request_uri;	
 
     if ($host = www.jcentner.com) {
-        return 301 https://$host$request_uri;
+        return 302 https://$host$request_uri;
     }
 
     if ($host = jcentner.com) {
-        return 301 https://$host$request_uri;
+        return 302 https://$host$request_uri;
     } 
 }
 
 server {
 
-	listen [::]:443 ssl ipv6only=on; 
+	# listen [::]:443 ssl ipv6only=on; # enable for ipv6
 	listen 443 ssl; 
 
-	root /home/ubuntu/jcentner.com/html;
+	# root /home/ubuntu/jcentner.com/html;
+	root /var/www/html;
 
 	index index.html;
 	server_name www.jcentner.com jcentner.com;
