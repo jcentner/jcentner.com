@@ -32,10 +32,6 @@ server {
 		try_files $uri $uri/ $uri.html /index.html;
 	}
 
-	location /index.html {
-		expires 30s;
-	}
-
 	location /api {
 
 		proxy_set_header		Host $host;
