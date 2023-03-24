@@ -5,7 +5,9 @@ self='jcentner' # my username - automate this from who ran file, maybe?
 username='pgserver'
 database='pgserver'
 pg_hba='/etc/postgresql/14/main/pg_hba.conf'
+
 logfile='pg-install.log'
+echo 'new log' > $logfile
 
 echo "Updating server..."
 sudo apt-get update -y >> $logfile
@@ -28,12 +30,12 @@ echo "Creating user, role, and database..."
 sudo -u postgres createuser -s $username >> $logfile
 sudo -u postgres createdb $username >> $logfile
 sudo echo "local $database $self trust" >> $pg_hba # for added security, use peer only for newuser
-sudo pg_ctl reload
+sudo pg_ctlcluster reload
 sleep 3
 
 for file in ${initdb[@]}; do
 	echo "Running $file..."
-	su $self -c "cd psql -U $username -d $database -a -f $file" # add -q for quiet if logfile gets welcome messages, etc.
+	sudo su $self -c "psql -U $username -d $database -a -f $file"
 done
 
 echo "Deployment done; $database database created with user $username"
