@@ -1,11 +1,10 @@
 Postgres Setup
 
-- install postgresql: apt install postgresql postgresql-contrib
-- create postgres user: sudo -i -u postgres
-- psql shell as postgres user: psql
-- create role in postgres for Linux username: createuser --interactive
+- install postgresql: sudo apt install postgresql postgresql-contrib
+- login as postgres user: sudo -i -u postgres
+- create role in postgres for Linux username: createuser --interactive (not in psql, but as postgres@server)
 - create database: createdb [username]
 
-Then, can connect to Postgres with 'psql' as user
+Then, can connect to Postgres with 'psql' as username
 
 
