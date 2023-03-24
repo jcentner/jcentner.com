@@ -1,13 +1,16 @@
 #!/bin/bash
 
 packages=('postgresql' 'postgresql-contrib')
-self='jcentner' # my username - automate this from who ran file, maybe?
-username='pgserver'
-database='pgserver'
-pg_hba='/etc/postgresql/14/main/pg_hba.conf'
 
-logfile='pg-install.log'
+
+# username='pgserver'
+# database='pgserver'
+# pg_hba='/etc/postgresql/14/main/pg_hba.conf'
+
+
+logfile='/tmp/pg-install.log'
 echo 'new log' > $logfile
+chmod o+rw $logfile
 
 echo "Updating server..."
 sudo apt-get update -y >> $logfile
@@ -18,7 +21,7 @@ sudo apt-get install ${packages[@]} -y >> $logfile
 echo "Starting service..."
 sudo systemctl start postgresql.service >> $logfile
 sudo systemctl enable postgresql.service >> $logfile
-sleep 5
+sleep 10
 
 echo "Gathering deployment scripts..."
 shopt -s nullglob
@@ -27,15 +30,17 @@ initdb=(./*.sql)
 echo "Creating user, role, and database..."
 # for added security, make username/database a newuser (and sudo useradd newuser)
 # then define and use a password for newuser with an environment variable
-sudo -u postgres createuser -s $username >> $logfile
-sudo -u postgres createdb $username >> $logfile
-sudo echo "local $database $self trust" >> $pg_hba # for added security, use peer only for newuser
-sudo systemctl reload postgresql
-sleep 5
+sudo -i -u postgres psql >> $logfile << xx
+CREATE ROLE $USERNAME SUPERUSER LOGIN;
+CREATE DATABASE $USERNAME;
+GRANT ALL PRIVILEGES ON DATABASE $USERNAME TO $USERNAME;
+xx
 
 for file in ${initdb[@]}; do
 	echo "Running $file..."
-	sudo su $self -c "psql -U $username -d $database -a -f $file"
+	psql -a -f $file >> $logfile
 done
 
-echo "Deployment done; $database database created with user $username"
+cp $logfile .
+echo "Deployment done"
+
