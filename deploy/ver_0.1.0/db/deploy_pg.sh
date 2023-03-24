@@ -1,7 +1,9 @@
 #!/bin/bash
 
 packages=('postgresql' 'postgresql-contrib')
-
+if [ -z "$USERNAME" ] ; then
+	USERNAME=$USER
+fi
 
 # username='pgserver'
 # database='pgserver'
@@ -13,6 +15,7 @@ echo 'new log' > $logfile
 chmod o+rw $logfile
 
 echo "Updating server..."
+export DEBIAN_FRONTEND=noninteractive
 sudo apt-get update -y >> $logfile
 
 echo "Installing dependencies..."
