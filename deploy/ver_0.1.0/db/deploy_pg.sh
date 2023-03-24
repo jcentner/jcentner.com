@@ -30,8 +30,8 @@ echo "Creating user, role, and database..."
 sudo -u postgres createuser -s $username >> $logfile
 sudo -u postgres createdb $username >> $logfile
 sudo echo "local $database $self trust" >> $pg_hba # for added security, use peer only for newuser
-sudo pg_ctlcluster reload
-sleep 3
+sudo systemctl reload postgresql
+sleep 5
 
 for file in ${initdb[@]}; do
 	echo "Running $file..."
