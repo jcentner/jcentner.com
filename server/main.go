@@ -48,7 +48,7 @@ func main() {
 		c.String(http.StatusOK, dbgo.SVarI(c))
 	})
 
-	r.GET("/api/v1/visit", func(c *gin.Context) {
+	r.POST("/api/v1/visit", func(c *gin.Context) {
 		// get client IP address
 		fmt.Printf("%s\n", c.Request.Header.Get("X-Forwarded-For"))
 
