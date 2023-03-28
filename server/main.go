@@ -48,6 +48,12 @@ func main() {
 		c.String(http.StatusOK, dbgo.SVarI(c))
 	})
 
+	r.GET("/api/v1/visit", func(c *gin.Context) {
+		// get client IP address
+		fmt.Printf("%s\n", c.Request.Header.get("X-Forwarded-For"))
+
+	})
+
 	// ----------------------------------------------------------------------
 	r.Run(*HostPort) // listen and serve on HostPort (0.0.0.0:9001)
 }
