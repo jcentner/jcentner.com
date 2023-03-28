@@ -14,4 +14,4 @@ $.getJSON("https://api.myip.com", function(data) {
 	fetch("api/v1/status")
 		.then(response => response.json())
 		.then(data => console.log(data));
-}
+});
