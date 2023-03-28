@@ -39,7 +39,7 @@ func main() {
 	// r.Use(static.Serve("/", static.LocalFile(*Dir, false))) // not serving files
 
 	// ----------------------------------------------------------------------
-	// API: /status,
+	// API: /status, /visit,
 	// ----------------------------------------------------------------------
 
 	r.GET("/api/v1/status", func(c *gin.Context) { // anon inline function
@@ -52,6 +52,13 @@ func main() {
 		// get client IP address
 		fmt.Printf("%s\n", c.Request.Header.get("X-Forwarded-For"))
 
+		// get json data from api call
+		fmt.Printf("%s\n", c.Request.Body)
+
+		// get country for IP
+		//country = http.Get("https://api.country.is/%s", c.Request.Body. bind/store body above first, then access from there
+
+		c.Status(http.StatusOk)
 	})
 
 	// ----------------------------------------------------------------------
