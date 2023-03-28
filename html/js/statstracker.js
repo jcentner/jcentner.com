@@ -14,7 +14,7 @@ fetch("api/v1/status")
 	.then(data => console.log(data));
 */
 
-fetch("api/v1/visit", {
+fetch("/api/v1/visit", {
 	method: "POST",
 	header: {
 		"Content-Type": "application/json",
