@@ -50,7 +50,7 @@ func main() {
 
 	r.GET("/api/v1/visit", func(c *gin.Context) {
 		// get client IP address
-		fmt.Printf("%s\n", c.Request.Header.get("X-Forwarded-For"))
+		fmt.Printf("%s\n", c.Request.Header.Get("X-Forwarded-For"))
 
 		// get json data from api call
 		fmt.Printf("%s\n", c.Request.Body)
