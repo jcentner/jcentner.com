@@ -58,7 +58,8 @@ func main() {
 		// get country for IP
 		//country = http.Get("https://api.country.is/%s", c.Request.Body. bind/store body above first, then access from there
 
-		c.Status(http.StatusOK)
+		c.Header("Content-Type", "application/json; charset=utf-8")
+		c.String(http.StatusOK, dbgo.SVarI(c))
 	})
 
 	// ----------------------------------------------------------------------
