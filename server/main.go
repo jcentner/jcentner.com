@@ -58,7 +58,7 @@ func main() {
 		// get country for IP
 		//country = http.Get("https://api.country.is/%s", c.Request.Body. bind/store body above first, then access from there
 
-		c.Status(http.StatusOk)
+		c.Status(http.StatusOK)
 	})
 
 	// ----------------------------------------------------------------------
