@@ -25,6 +25,5 @@ fetch("api/v1/visit", {
 	.then(data => {
 		console.log("Success:", data);
 	})
-	.catch(error => console.error("Error:", error);
-});
+	.catch(error => console.error("Error:", error));
 
