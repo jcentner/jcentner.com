@@ -12,6 +12,7 @@ CREATE TABLE IF NOT EXISTS visits(
 	visit_id uuid DEFAULT uuid_generate_v4 (),
 	visit_timestamp TIMESTAMP DEFAULT NOW(),
 	visitor_ip INET,
+	visitor_country TEXT,
 	page TEXT,
 	referrer TEXT,
 	PRIMARY KEY (visit_id)
