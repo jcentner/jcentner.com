@@ -1,8 +1,10 @@
 package main
 
 import (
+	"encoding/json"
 	"flag"
 	"fmt"
+	"io/ioutil"
 	"net/http"
 	"os"
 
@@ -10,9 +12,19 @@ import (
 	"github.com/pschlump/dbgo"
 )
 
+// command line args
+
 var HostPort = flag.String("hostport", ":9001", "Host/Port to listen on")
 
 //var Dir = flag.String("dir", "./www", "Directory from which to serve static assets")
+
+// database context and connection
+
+//var conn *pgxpool.Pool
+//var ctx context.Context
+// *** TODO ***
+
+// request types
 
 func main() {
 
@@ -38,28 +50,73 @@ func main() {
 	r := gin.Default()
 	// r.Use(static.Serve("/", static.LocalFile(*Dir, false))) // not serving files
 
+	// database connection
+	//dbConnect()
+	//defer dbDisconnect()
+	// *** TODO *** db functions
+
 	// ----------------------------------------------------------------------
 	// API: /status, /visit,
 	// ----------------------------------------------------------------------
 
-	r.GET("/api/v1/status", func(c *gin.Context) { // anon inline function
+	// --- status ---
+
+	r.GET("/api/v1/status", func(c *gin.Context) { // anon inline function defines handler
 		c.Status(http.StatusOK)
 		c.Header("Content-Type", "application/json; charset=utf-8")
-		c.String(http.StatusOK, dbgo.SVarI(c))
+		c.String(http.StatusOK /*200*/, dbgo.SVarI(c))
 	})
 
-	r.POST("/api/v1/visit", func(c *gin.Context) {
-		// get client IP address
-		fmt.Printf("%s\n", c.Request.Header.Get("X-Forwarded-For"))
+	// --- visit ---
 
+	type VisitData struct {
+		page     string `json:"page"`
+		referrer string `json:"referrer"`
+	}
+
+	type CountryData struct {
+		ip      string `json:"ip"`
+		country string `json:"country"`
+	}
+
+	r.POST("/api/v1/visit", func(c *gin.Context) { // another anon inline handler
 		// get json data from api call
-		fmt.Printf("%s\n", c.Request.Body)
+		var data VisitData
+		if err := c.BindJSON(&data); err != nil {
+			c.AbortWithError(http.StatusBadRequest /*400*/, err)
+		}
+
+		// get client IP address
+		ip := c.Request.Header.Get("X-Forwarded-For")
 
 		// get country for IP
-		//country = http.Get("https://api.country.is/%s", c.Request.Body. bind/store body above first, then access from there
+		var country CountryData
+		var request_string = "https://api.country.is/" + ip
+
+		resp, err := http.Get(request_string)
+		if err != nil {
+			fmt.Printf("Country API encountered an error: %s, using XX as backup.\n", err)
+		}
+		if resp != nil {
+			defer resp.Body.Close()
+		}
+
+		body, err := ioutil.ReadAll(resp.Body)
+		if err != nil {
+			fmt.Printf("Read Country API response encountered an error %s, using XX as backup.\n", err)
+		}
+
+		if jsonerr := json.Unmarshal(body, &country); err != nil {
+			fmt.Printf("JSON error: %s\n", jsonerr)
+		}
+
+		fmt.Printf("data.page: %s", data.page)
+		fmt.Printf("data.referrer: %s", data.referrer)
+		fmt.Printf("ip: %s", country.ip)
+		fmt.Printf("country: %s", country.country)
 
 		c.Header("Content-Type", "application/json; charset=utf-8")
-		c.String(http.StatusOK, dbgo.SVarI(c))
+		c.String(http.StatusOK /*200*/, dbgo.SVarI(c))
 	})
 
 	// ----------------------------------------------------------------------
