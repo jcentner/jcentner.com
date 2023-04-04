@@ -5,14 +5,14 @@ package main
 // See /LICENSE.bsd
 
 import (
-	"encoding/json"
+	"context"
 	"flag"
 	"fmt"
-	"io/ioutil"
 	"net/http"
 	"os"
 
 	"github.com/gin-gonic/gin"
+	"github.com/jackc/pgx/v4/pgxpool"
 	"github.com/pschlump/dbgo"
 )
 
@@ -24,11 +24,8 @@ var HostPort = flag.String("hostport", ":9001", "Host/Port to listen on")
 
 // database context and connection
 
-//var conn *pgxpool.Pool
-//var ctx context.Context
-// *** TODO ***
-
-// request types
+var conn *pgxpool.Pool
+var ctx context.Context
 
 func main() {
 
@@ -55,9 +52,8 @@ func main() {
 	// r.Use(static.Serve("/", static.LocalFile(*Dir, false))) // not serving files
 
 	// database connection
-	//dbConnect()
-	//defer dbDisconnect()
-	// *** TODO *** db functions
+	PGXConnect()
+	defer PGXDisconnect()
 
 	// ----------------------------------------------------------------------
 	// API: /status, /visit,
@@ -105,14 +101,7 @@ func main() {
 			defer resp.Body.Close()
 		}
 
-		body, err := ioutil.ReadAll(resp.Body)
-		if err != nil {
-			fmt.Printf("Read country response encountered error %s\n", err)
-		}
-
-		if jsonerr := json.Unmarshal(body, &country); err != nil {
-			fmt.Printf("JSON error: %s\n (did read fail?)\n", jsonerr)
-		}
+		lib.ReadJSON(resp.Body, &country)
 
 		fmt.Printf("data.page: %s\n", data.Page)
 		fmt.Printf("data.referrer: %s\n", data.Referrer)
