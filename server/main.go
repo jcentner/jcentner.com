@@ -103,11 +103,11 @@ func main() {
 
 		body, err := ioutil.ReadAll(resp.Body)
 		if err != nil {
-			fmt.Printf("Read Country API response encountered an error %s, using XX as backup.\n", err)
+			fmt.Printf("Read country response encountered error %s\n", err)
 		}
 
 		if jsonerr := json.Unmarshal(body, &country); err != nil {
-			fmt.Printf("JSON error: %s\n", jsonerr)
+			fmt.Printf("JSON error: %s\n (did read fail?)\n", jsonerr)
 		}
 
 		fmt.Printf("data.page: %s", data.page)
@@ -115,8 +115,12 @@ func main() {
 		fmt.Printf("ip: %s", country.ip)
 		fmt.Printf("country: %s", country.country)
 
+		// insert
+
+		
+
 		c.Header("Content-Type", "application/json; charset=utf-8")
-		c.String(http.StatusOK /*200*/, dbgo.SVarI(c))
+		c.String(http.StatusOK /*200*/, country)
 	})
 
 	// ----------------------------------------------------------------------
