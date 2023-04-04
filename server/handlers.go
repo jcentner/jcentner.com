@@ -12,6 +12,7 @@ import (
 )
 
 // VisitHandler inserts a new row into the visits table
+// r.POST("/api/v1/visit", VisitHandler)
 
 func VisitHandler(c *gin.Context) {
 
@@ -27,7 +28,7 @@ func VisitHandler(c *gin.Context) {
 
 	// get json data from api call
 	var data VisitData
-	if err := c.BindJson(&data); err != nil {
+	if err := c.BindJSON(&data); err != nil {
 		c.AbortWithError(http.StatusBadRequest /*400*/, err)
 	}
 
@@ -46,19 +47,28 @@ func VisitHandler(c *gin.Context) {
 		defer resp.Body.Close()
 	}
 
-	lib.ReadJSON(resp.Body, &country)
+	ReadJSON(resp.Body, &country)
 
 	// sql and perform insert, returning the new visit_id
 	statement := "insert into visits ( visitor_ip, visitor_country, page, referrer ) values ( $1 $2 $3 $4 ) returning ( visit_id )"
 
-	if res, err := conn.Exec(ctx, statement, country.Ip, country.Country, data.Page, data.Referrer); err != nil {
+	res, err := conn.Exec(ctx, statement, country.Ip, country.Country, data.Page, data.Referrer)
+	if err != nil {
 		fmt.Printf("Error on insert of visit data: %s\n", err)
 		return
 	}
 
-	id := ""
-	if len(res) > 0 { // response
-		id = fmt.Sprintf("%d", res[0].visit_id) // 0th row of the response
+	// check response for visit_id
+	defer res.Close() // ensure not using up connections
+	var id string
+	res.Next() // get next row in response
+	if err = res.Scan(&id); err != nil {
+		fmt.Printf("Error in reading response from insert query (VisitHandler): %s\n", err)
+	}
+
+	// check conn lost
+	if err = res.Err(); err != nil {
+		fmt.Printf("Error: %s\n", err)
 	}
 
 	c.JSON(http.StatusOK, gin.H{
