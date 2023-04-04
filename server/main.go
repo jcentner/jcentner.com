@@ -1,5 +1,9 @@
 package main
 
+// Copyright (C) Jacob Centner, 2023
+// BSD 3 Clause Licensed
+// See /LICENSE.bsd
+
 import (
 	"encoding/json"
 	"flag"
@@ -110,10 +114,10 @@ func main() {
 			fmt.Printf("JSON error: %s\n (did read fail?)\n", jsonerr)
 		}
 
-		fmt.Printf("data.page: %s", data.Page)
-		fmt.Printf("data.referrer: %s", data.Referrer)
-		fmt.Printf("ip: %s", country.Ip)
-		fmt.Printf("country: %s", country.Country)
+		fmt.Printf("data.page: %s\n", data.Page)
+		fmt.Printf("data.referrer: %s\n", data.Referrer)
+		fmt.Printf("ip: %s\n", country.Ip)
+		fmt.Printf("country: %s\n", country.Country)
 
 		// insert
 
