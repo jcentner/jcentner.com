@@ -69,51 +69,9 @@ func main() {
 
 	// --- visit ---
 
-	type VisitData struct {
-		Page     string `json:"page"`
-		Referrer string `json:"referrer"`
-	}
-
-	type CountryData struct {
-		Ip      string `json:"ip"`
-		Country string `json:"country"`
-	}
-
-	r.POST("/api/v1/visit", func(c *gin.Context) { // another anon inline handler
-		// get json data from api call
-		var data VisitData
-		if err := c.BindJSON(&data); err != nil {
-			c.AbortWithError(http.StatusBadRequest /*400*/, err)
-		}
-
-		// get client IP address
-		ip := c.Request.Header.Get("X-Forwarded-For")
-
-		// get country for IP
-		var country CountryData
-		var request_string = "https://api.country.is/" + ip
-
-		resp, err := http.Get(request_string)
-		if err != nil {
-			fmt.Printf("Country API encountered an error: %s, using XX as backup.\n", err)
-		}
-		if resp != nil {
-			defer resp.Body.Close()
-		}
-
-		lib.ReadJSON(resp.Body, &country)
-
-		fmt.Printf("data.page: %s\n", data.Page)
-		fmt.Printf("data.referrer: %s\n", data.Referrer)
-		fmt.Printf("ip: %s\n", country.Ip)
-		fmt.Printf("country: %s\n", country.Country)
-
-		// insert
-
-		c.Header("Content-Type", "application/json; charset=utf-8")
-		c.String(http.StatusOK /*200*/, dbgo.SVarI(c))
-	})
+	r.POST("/api/v1/visit", VisitHandler) // handlers.go
 
 	// ----------------------------------------------------------------------
+
 	r.Run(*HostPort) // listen and serve on HostPort (0.0.0.0:9001)
 }
