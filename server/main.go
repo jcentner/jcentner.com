@@ -70,13 +70,13 @@ func main() {
 	// --- visit ---
 
 	type VisitData struct {
-		page     string `json:"page"`
-		referrer string `json:"referrer"`
+		Page     string `json:"page"`
+		Referrer string `json:"referrer"`
 	}
 
 	type CountryData struct {
-		ip      string `json:"ip"`
-		country string `json:"country"`
+		Ip      string `json:"ip"`
+		Country string `json:"country"`
 	}
 
 	r.POST("/api/v1/visit", func(c *gin.Context) { // another anon inline handler
@@ -110,17 +110,15 @@ func main() {
 			fmt.Printf("JSON error: %s\n (did read fail?)\n", jsonerr)
 		}
 
-		fmt.Printf("data.page: %s", data.page)
-		fmt.Printf("data.referrer: %s", data.referrer)
-		fmt.Printf("ip: %s", country.ip)
-		fmt.Printf("country: %s", country.country)
+		fmt.Printf("data.page: %s", data.Page)
+		fmt.Printf("data.referrer: %s", data.Referrer)
+		fmt.Printf("ip: %s", country.Ip)
+		fmt.Printf("country: %s", country.Country)
 
 		// insert
 
-		
-
 		c.Header("Content-Type", "application/json; charset=utf-8")
-		c.String(http.StatusOK /*200*/, country)
+		c.String(http.StatusOK /*200*/, dbgo.SVarI(c))
 	})
 
 	// ----------------------------------------------------------------------
