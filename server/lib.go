@@ -19,6 +19,7 @@ import (
 func ReadJSON(reader io.Reader, gostruct interface{}) (err error) {
 	var buffer []byte
 	_, err = reader.Read(buffer)
+	fmt.Printf("DEBUG: Buffer: %s\n", buffer)
 	if err != nil {
 		fmt.Printf("ReadJSON encountered error: %s\n", err)
 		return
