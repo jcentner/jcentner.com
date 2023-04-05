@@ -5,10 +5,7 @@ const data = {
 	referrer: ((document.referrer) ? document.referrer : 'Direct')
 }
 
-console.log(`page visited: ${data.page}`)
-console.log(`referrer address: ${data.referrer}`)
-
-// test API call
+// status API call
 /*
 fetch("api/v1/status")
 	.then(response => response.json())
