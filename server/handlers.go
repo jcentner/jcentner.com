@@ -51,9 +51,6 @@ func VisitHandler(c *gin.Context) {
 
 	if err = ReadJSON(resp.Body, &country); err != nil {
 		fmt.Printf("ReadJSON error: %s, using IP/Country backup\n", err)
-		fmt.Printf("At error: country.Ip: %s\n", country.Ip)
-		fmt.Printf("At error: country.Country: %s\n", country.Country)
-		fmt.Printf("At error: resp.Body: %s\n", resp.Body)
 		country.Ip = ip
 		country.Country = "XX"
 	}

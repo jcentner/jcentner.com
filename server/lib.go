@@ -16,10 +16,8 @@ import (
 
 // ReadJSON: read JSON and unmarshal into a go struct
 
-func ReadJSON(reader io.Reader, gostruct interface{}) (err error) {
-	var buffer []byte
-	_, err = reader.Read(buffer)
-	fmt.Printf("DEBUG: Buffer: %s\n", buffer)
+func ReadJSON(body io.ReadCloser, gostruct interface{}) (err error) {
+	buffer, err := ioutil.Readall(body)
 	if err != nil {
 		fmt.Printf("ReadJSON encountered error: %s\n", err)
 		return
