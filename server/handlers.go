@@ -49,7 +49,11 @@ func VisitHandler(c *gin.Context) {
 
 	defer resp.Body.Close()
 
-	ReadJSON(resp.Body, &country)
+	if err = ReadJSON(resp.Body, &country); err != nil {
+		fmt.Printf("ReadJSON error: %s, using IP/Country backup\n", err)
+		country.Ip = ip
+		country.Country = "XX"
+	}
 
 	// sql and perform insert, returning the new visit_id
 	statement := "insert into visits ( visitor_ip, visitor_country, page, referrer ) values ( $1, $2, $3, $4 ) returning ( visit_id )"
