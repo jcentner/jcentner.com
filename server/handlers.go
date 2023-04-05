@@ -52,7 +52,7 @@ func VisitHandler(c *gin.Context) {
 	ReadJSON(resp.Body, &country)
 
 	// sql and perform insert, returning the new visit_id
-	statement := "insert into visits ( visitor_ip, visitor_country, page, referrer ) values ( $1 $2 $3 $4 ) returning ( visit_id )"
+	statement := "insert into visits ( visitor_ip, visitor_country, page, referrer ) values ( $1, $2, $3, $4 ) returning ( visit_id )"
 
 	row := conn.QueryRow(ctx, statement, country.Ip, country.Country, data.Page, data.Referrer)
 
