@@ -1,7 +1,8 @@
 // get parameters
+
 const data = {
 	page: window.location.href,
-	referrer: document.referrer
+	referrer: ((document.referrer) ? document.referrer : 'Direct')
 }
 
 console.log(`page visited: ${data.page}`)

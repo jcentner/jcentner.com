@@ -18,7 +18,7 @@ func VisitHandler(c *gin.Context) {
 
 	type VisitData struct {
 		Page     string `json:"page" binding:"required"`
-		Referrer string `json:"referrer" default:"Direct"`
+		Referrer string `json:"referrer" binding:"required"`
 	}
 
 	type CountryData struct {
