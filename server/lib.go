@@ -9,7 +9,6 @@ import (
 	"encoding/json"
 	"fmt"
 	"io"
-	"io/ioutil"
 	"os"
 
 	"github.com/jackc/pgx/v4/pgxpool"
@@ -18,7 +17,8 @@ import (
 // ReadJSON: read JSON and unmarshal into a go struct
 
 func ReadJSON(reader io.Reader, gostruct interface{}) (err error) {
-	buffer, err := ioutil.Read(reader)
+	var buffer []byte
+	_, err = reader.Read(buffer)
 	if err != nil {
 		fmt.Printf("ReadJSON encountered error: %s\n", err)
 		return
@@ -37,7 +37,8 @@ func PGXConnect() {
 	ctx = context.Background()
 	conurl := os.Getenv("DATABASE_URL")
 
-	if conn, err := pgxpool.Connect(ctx, conurl); err != nil {
+	var err error
+	if conn, err = pgxpool.Connect(ctx, conurl); err != nil {
 		fmt.Printf("Unable to connect to %s; error: %v\n", conurl, err)
 		os.Exit(1)
 	}

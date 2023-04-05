@@ -17,8 +17,8 @@ import (
 func VisitHandler(c *gin.Context) {
 
 	type VisitData struct {
-		Page     string `json:"page"`
-		Referrer string `json:"referrer"`
+		Page     string `json:"page" binding:"required"`
+		Referrer string `json:"referrer" binding:"required"`
 	}
 
 	type CountryData struct {
@@ -29,7 +29,8 @@ func VisitHandler(c *gin.Context) {
 	// get json data from api call
 	var data VisitData
 	if err := c.BindJSON(&data); err != nil {
-		c.AbortWithError(http.StatusBadRequest /*400*/, err)
+		c.AbortWithError(http.StatusNotAcceptable /*406*/, err)
+		return
 	}
 
 	// get client IP
@@ -42,33 +43,26 @@ func VisitHandler(c *gin.Context) {
 	resp, err := http.Get(request_string)
 	if err != nil {
 		fmt.Printf("Country API encountered an error: %s, using XX as backup.\n", err)
+		country.Country = "XX"
+		/* TODO test country backup*/
 	}
-	if resp != nil {
-		defer resp.Body.Close()
-	}
+
+	defer resp.Body.Close()
 
 	ReadJSON(resp.Body, &country)
 
 	// sql and perform insert, returning the new visit_id
 	statement := "insert into visits ( visitor_ip, visitor_country, page, referrer ) values ( $1 $2 $3 $4 ) returning ( visit_id )"
 
-	res, err := conn.Exec(ctx, statement, country.Ip, country.Country, data.Page, data.Referrer)
-	if err != nil {
-		fmt.Printf("Error on insert of visit data: %s\n", err)
-		return
-	}
+	row := conn.QueryRow(ctx, statement, country.Ip, country.Country, data.Page, data.Referrer)
 
 	// check response for visit_id
-	defer res.Close() // ensure not using up connections
+	// PGX pool closes connection on row.Scan
 	var id string
-	res.Next() // get next row in response
-	if err = res.Scan(&id); err != nil {
+	if err = row.Scan(&id); err != nil {
 		fmt.Printf("Error in reading response from insert query (VisitHandler): %s\n", err)
-	}
-
-	// check conn lost
-	if err = res.Err(); err != nil {
-		fmt.Printf("Error: %s\n", err)
+		c.AbortWithError(http.StatusBadRequest /*400*/, err)
+		return
 	}
 
 	c.JSON(http.StatusOK, gin.H{
