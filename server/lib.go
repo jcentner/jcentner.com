@@ -9,6 +9,7 @@ import (
 	"encoding/json"
 	"fmt"
 	"io"
+	"io/ioutil"
 	"os"
 
 	"github.com/jackc/pgx/v4/pgxpool"
@@ -17,7 +18,7 @@ import (
 // ReadJSON: read JSON and unmarshal into a go struct
 
 func ReadJSON(body io.ReadCloser, gostruct interface{}) (err error) {
-	buffer, err := ioutil.Readall(body)
+	buffer, err := ioutil.ReadAll(body)
 	if err != nil {
 		fmt.Printf("ReadJSON encountered error: %s\n", err)
 		return
