@@ -3,7 +3,6 @@ module github.com/jcentner.com/server/stats-tracker
 go 1.18
 
 require (
-	github.com/gin-contrib/static v0.0.1
 	github.com/gin-gonic/gin v1.9.0
 	github.com/jackc/pgx/v4 v4.18.1
 	github.com/pschlump/dbgo v1.0.5
