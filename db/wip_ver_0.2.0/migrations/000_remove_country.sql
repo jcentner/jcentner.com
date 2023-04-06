@@ -1,0 +1,3 @@
+-- remove visitor_country from visits table
+
+alter table visits ...
