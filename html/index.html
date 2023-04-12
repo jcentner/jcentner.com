@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html class="h-100">
+<html lang="en">
 	<head>
 		<meta charset="utf-8">
 		<meta name="viewport" content="width=device-width, initial-scale=1">	
@@ -37,7 +37,7 @@
 		</svg>
 
 		<!-- Navbar --> <!-- TODO: apply styles/colors to fit theme -->
-		<nav class="navbar navbar-expand-lg fixed-top navbarScroll">
+		<nav class="navbar navbar-expand-lg fixed-top navbarScroll navbar-dark">
 			<div class="container">
 				<a class="navbar-brand" href="#">Jacob Centner</a>
   				<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
@@ -45,14 +45,11 @@
   				</button>
 				<div class="collapse navbar-collapse" id="navbarSupportedContent">
                 	<ul class="navbar-nav ms-auto">
-                    	<li class="nav-item active">
-                        	<a class="nav-link" href="#home">Home</a>
+                    	<li class="nav-item">
+                        	<a class="nav-link" href="#bio">Bio</a>
                     	</li>
                     	<li class="nav-item">
-                        	<a class="nav-link" href="#about">About</a>
-                    	</li>
-                    	<li class="nav-item">
-                        	<a class="nav-link" href="#portfolio">Portfolio</a>
+                        	<a class="nav-link" href="#projects">Projects</a>
                     	</li>
                     	<li class="nav-item">
                         	<a class="nav-link" href="#contact">Contact</a>
@@ -62,16 +59,110 @@
         	</div>
     	</nav>
 
-		<!-- Home -->
+		<!-- Home --> <!-- TODO: replace with carousels (vary # of images shown by screen size) -->
 		<section class="bgimage" id="home">
 			<div class="container-fluid">
 				<div class="row">
-					<div class="col-lg-12 home_text">
+					<div class="col-md-12 home_text">
 						<h2 class="home_title">Hi, I'm Jake</h2>
 						<p class="home_desc">I'm a software developer and entrepreneur tackling problems with an interdisciplinary approach</p>
 					</div>
 				</div>
 			</div>
+		</section>
+
+
+		<!-- Bio section-->
+    	<section id="bio">
+        	<div class="container mt-4 pt-4">
+            	<h1 class="text-center">Bio</h1>
+            	<div class="row mt-4">
+                	<div class="col-lg-4">
+                    	<img src="images/jc.jpg" class="bio_image" alt="">
+                	</div>
+
+                	<div class="col-lg-8">
+                    	<p> Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged
+
+                    	</p>
+                    	<div class="row mt-3">
+                        	<p> has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged.
+                            not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged.
+                        	</p>
+                    	</div>
+                    	<div class="row mt-3">
+                        	<div class="col-md-6">
+                            	<ul>
+                                	<li>Go</li>
+                                	<li>Python</li>
+                                	<li>Postgres</li>
+									<li>Solidity</li>
+									<li>C/C++/C#</li>
+                            	</ul>
+                        	</div>
+                        	<div class="col-md-6">
+                            	<ul>
+									<li>Full-stack</li>
+                                	<li>AI/ML</li>
+                                	<li>Blockchain</li>
+									<li>Startups</li>
+									<li>Databases</li>
+                            	</ul>
+                        	</div>
+                    	</div>
+                	</div>
+            	</div>
+			</div>
+    	</section>
+
+
+		<!-- Projects --> <!-- TODO: apply styles/colors -->
+	    <section id="projects">
+        	<div class="container mt-3">
+            	<h1 class="text-center">Projects</h1>
+            	<div class="row">
+                	<div class="col-lg-4 mt-4">
+                    	<div class="card projectContent">
+                        	<img class="card-img-top" src="images/jcentnercom.jpg" alt="Card image" style="width:100%">
+                        	<div class="card-body">
+                            	<h4 class="card-title">jcentner.com</h4>
+								<p class="card-text">Full-stack reactive, responsive portfolio website using AWS EC2, nginx, Go, Postgres, JavaScript, and Bootstrap.</p>
+                            	<div class="text-center">
+                                	<a href="https://github.com/jcentner/jcentner.com/" class="btn btn-success">Github Repo</a>
+                            	</div>
+                        	</div>
+                    	</div>
+                	</div>
+
+        	        <div class="col-lg-4 mt-4">
+            	        <div class="card projectContent">
+                	        <img class="card-img-top" src="images/chromedino.jpg" alt="Card image" style="width:100%">
+                    	    <div class="card-body">
+                        	    <h4 class="card-title">Chrome Dino</h4>
+								<p class="card-text">Chrome Dino Description</p>
+                            	<div class="text-center">
+                                	<a href="https://github.com/jcentner/chrome-dino/" class="btn btn-success">Github Repo</a>
+                            	</div>
+                	        </div>
+            	        </div>
+        	        </div>
+
+        	        <div class="col-lg-4 mt-4">
+            	        <div class="card projectContent">
+                	        <img class="card-img-top" src="images/pod.jpg" alt="Card image" style="width:100%">
+                    	    <div class="card-body">
+                        	    <h4 class="card-title">Podcast</h4>
+								<p class="card-text">Podcast Description</p>
+                            	<div class="text-center">
+                                	<a href="#" class="btn btn-success">Link</a>
+                            	</div>
+                        	</div>
+                    	</div>
+                	</div>
+            	</div>
+            	<br>
+				<!-- add additional row here when needed -->
+	    	</div>
 		</section>
 
 		<!-- Footer --> <!-- TODO: apply styles/colors to fit theme -->
@@ -91,6 +182,7 @@
 		<!-- Import Bootstrap JS -->
 		<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.min.js" integrity="sha384-cuYeSxntonz0PPNlHhBs68uyIAVpIIOZZ5JqeqvYYIcEL727kskC66kF92t6Xl2V" crossorigin="anonymous"></script>
 
+		<script src="./js/site.js"></script>
 	</body> 
 </html>
 
