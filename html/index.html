@@ -10,10 +10,9 @@
 		
 		<link rel="stylesheet" href="css/styles.css">
 
-		<!-- Import bootstrap --!>
+		<!-- Import Bootstrap CSS --!>
 		<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" integrity="sha384-rbsA2VBKQhggwzxH7pPCaAqO46MgnOM80zW1RWuH61DGLwZJEdK2Kadq2F9CUG65" crossorigin="anonymous">	
 
-		<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.min.js" integrity="sha384-cuYeSxntonz0PPNlHhBs68uyIAVpIIOZZ5JqeqvYYIcEL727kskC66kF92t6Xl2V" crossorigin="anonymous"></script>
 		
 
 		<!-- statstracker -->
@@ -37,7 +36,7 @@
 			</symbol>
 		</svg>
 
-		<!-- Header/Navbar -->
+		<!-- Navbar --> <!-- TODO: apply styles/colors to fit theme -->
 		<nav class="navbar navbar-expand-lg fixed-top navbarScroll">
 			<div class="container">
 				<a class="navbar-brand" href="#">Jacob Centner</a>
@@ -45,43 +44,37 @@
     				<span class="navbar-toggler-icon"></span>
   				</button>
 				<div class="collapse navbar-collapse" id="navbarSupportedContent">
-                <ul class="navbar-nav ms-auto">
-                    <li class="nav-item active">
-                        <a class="nav-link" href="#home">Home</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="#about">About</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="#portfolio">Portfolio</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="#contact">Contact</a>
-                    </li>
-                </ul>
-                
-            </div>
-        </div>
-    </nav>
+                	<ul class="navbar-nav ms-auto">
+                    	<li class="nav-item active">
+                        	<a class="nav-link" href="#home">Home</a>
+                    	</li>
+                    	<li class="nav-item">
+                        	<a class="nav-link" href="#about">About</a>
+                    	</li>
+                    	<li class="nav-item">
+                        	<a class="nav-link" href="#portfolio">Portfolio</a>
+                    	</li>
+                    	<li class="nav-item">
+                        	<a class="nav-link" href="#contact">Contact</a>
+                    	</li>
+                	</ul>
+            	</div>
+        	</div>
+    	</nav>
 
-		<main class="flex-shrink-0">
-			<div class="container">
-    			<h1 class="mt-5 mb-3 text-center">Jacob Centner</h1>
-				<div class="d-flex justify-content-between align-items-center mb-3 mx-5 px-5">
-					<div class="col text-center">
-						<img src="./images/jc.jpg" class="mx-auto d-block" alt="Jacob Centner Picture" width="252" height="252">
-					</div>
-					<div class="col text-center">
-	    				<p class="lead">A technical professional with software development, project management, finance, and startup experience.</p>
-					</div>
-				</div>
+		<!-- Home -->
+		<section class="bgimage" id="home">
+			<div class="container-fluid">
 				<div class="row">
-					<p>I have a strong academic background heavily in math and modeling, plus practical experience with enterprise AI/ML, blockchain, full-stack web development, and entrepreneurship. I delved deep and developed a passion for finance and economics for my current startup, earning an education both by experience and experienced mentors. I've learned a lot about business development, corporate fundraising, project management, and more that I hope to apply to future roles.</p>
-					<p>As for development, I'm comfortable using Golang, Python (+Jupyter), SQL with especially Postgres, C/C++/C#, Java (+Android Studio), Solidity (+Truffle, Remix), Tensorflow, and Docker. I prefer to learn whatever technology best suits the task at hand, so I have some experience, but not fluency, with others like AWS, Javascript (Vue.js), Flutter, and Haskell. I'm always happy to jump into something totally new.</p>
+					<div class="col-lg-12 home_text">
+						<h2 class="home_title">Hi, I'm Jake</h2>
+						<p class="home_desc">I'm a software developer and entrepreneur tackling problems with an interdisciplinary approach</p>
+					</div>
 				</div>
 			</div>
-		</main>	
+		</section>
 
+		<!-- Footer --> <!-- TODO: apply styles/colors to fit theme -->
 		<div class="container">
 			<footer class="d-flex flex-wrap justify-content-between align-items-center py-3 mt-auto border-top">
 				<div class="col-md-4 d-flex align-items-center">
@@ -95,7 +88,9 @@
 			</footer>
 		</div>
 
-		<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js" integrity="sha384-w76AqPfDkMBDXo30jS1Sgez6pr3x5MlQ1ZAGC+nuZB+EYdgRZgiwxhTBTkF7CXvN" crossorigin="anonymous"></script>
+		<!-- Import Bootstrap JS -->
+		<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.min.js" integrity="sha384-cuYeSxntonz0PPNlHhBs68uyIAVpIIOZZ5JqeqvYYIcEL727kskC66kF92t6Xl2V" crossorigin="anonymous"></script>
+
 	</body> 
 </html>
 

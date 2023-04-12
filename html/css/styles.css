@@ -1,8 +1,32 @@
 /* CSS HEX */
---cal-poly-green: #2f4b26ff;
---timberwolf: #dbd6d2ff;
---blue-crayola: #2176ffff;
---celestial-blue: #33a1fdff;
---dim-gray: #635f59ff;
+:root {
+	--cal-poly-green: #2f4b26ff;
+	--timberwolf: #dbd6d2ff;
+	--blue-crayola: #2176ffff;
+	--celestial-blue: #33a1fdff;
+	--dim-gray: #635f59ff;
+}
 
+/* Home image, text */
+.bgimage {
+	height: 100vh;
+	background: url('../images/jc.jpg');
+	background-size: cover;
+	position: relative;
+}
+
+.home_title {
+	font-size: 4.5rem;
+}
+.home_desc {
+	font-size: 2rem;
+}
+.home_text {
+	text-align: center;
+	position: absolute;
+	top: 70%;
+	left: 50%;
+	transform: translate(-50%, -50%);
+	color: var(--cal-poly-green);
+}
 
