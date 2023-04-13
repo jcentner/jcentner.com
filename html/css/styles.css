@@ -7,18 +7,24 @@
 	--dim-gray: #635f59ff;
 }
 
+/* Sections */
+#bio, #projects {
+    margin-top: 4rem;
+    padding-top: 4rem;
+}
+
+#projects {
+	margin-bottom: 2rem;
+	padding-bottom: 2rem;
+}
+
 /* Nav */
 .navbarScroll.navbarDarken {
 	background-color: var(--blue-crayola);
 }
 
-/* Home image, text */
-.bgimage {
-	height: 100vh;
-	background: url('../images/jc.jpg');
-	background-size: cover;
-	position: relative;
-}
+/* Home carousel, text */
+/* .home_image {} when add carousel format here*/
 
 .home_title {
 	font-size: 4.5rem;
@@ -28,10 +34,8 @@
 }
 .home_text {
 	text-align: center;
-	position: absolute;
 	top: 50%;
 	left: 50%;
-	transform: translate(-50%, -50%);
 	color: var(--cal-poly-green);
 }
 
@@ -58,18 +62,6 @@
 }
 
 /* Socials */
-.social-icons {
-    font-size: 36px;
-    cursor: pointer;
-}
-.fa-facebook:hover,.fa-instagram:hover,.fa-twitter:hover,.fa-linkedin:hover, .fa-twitch:hover {
+.fa-github:hover,.fa-twitter:hover,.fa-linkedin:hover{
     color: #008000;
-}
-.fab {
-    color: #000000;
-}
-/* footer styling */
-#footer {
-    background-color: #808080;
-    text-align: center;
 }

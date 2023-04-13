@@ -60,10 +60,37 @@
     	</nav>
 
 		<!-- Home --> <!-- TODO: replace with carousels (vary # of images shown by screen size) -->
-		<section class="bgimage" id="home">
+		<section id="home">
 			<div class="container-fluid">
 				<div class="row">
 					<div class="col-md-12 home_text">
+						<div id="home_carousel" class="caoursel slide" data-bs-ride="carousel">
+							<div class="carousel-inner">
+ 	        					<div class="carousel-item active">
+    	                       	<img src="path/to/image1.jpg" class="d-block w-100" alt="Image 1">
+                   		    </div>
+	                        <div class="carousel-item">
+   		                         <img src="path/to/image2.jpg" class="d-block w-100" alt="Image 2">
+        	                </div>
+            	            <div class="carousel-item">
+                	            <img src="path/to/image3.jpg" class="d-block w-100" alt="Image 3">
+                    	    </div>
+                        	<div class="carousel-item">
+                            	<img src="path/to/image4.jpg" class="d-block w-100" alt="Image 4">
+	                        </div>
+    	                    <div class="carousel-item">
+        	                    <img src="path/to/image5.jpg" class="d-block w-100" alt="Image 5">
+            	            </div>
+                	    </div>
+                    	<button class="carousel-control-prev" type="button" data-bs-target="#carouselExample" data-bs-slide="prev">
+                        	<span class="carousel-control-prev-icon" aria-hidden="true"></span>
+	                        <span class="visually-hidden">Previous</span>
+    	                </button>
+        	            <button class="carousel-control-next" type="button" data-bs-target="#carouselExample" data-bs-slide="next">
+            	            <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                			<span class="visually-hidden">Next</span>
+                   		</button>
+               		</div>
 						<h2 class="home_title">Hi, I'm Jake</h2>
 						<p class="home_desc">I'm a software developer and entrepreneur tackling problems with an interdisciplinary approach</p>
 					</div>
