@@ -3,7 +3,7 @@
 	- navbar text size at large resolutions
 	- navbar mobile menu doesn't open, fix js
 	- add images for carousel (at WY testimony, TCS images, cello)
-	- add images for project cards
+	- add images for project cards; remove gif, cpu intense
 
 1.5: add build target options in makefile under various options for fun
 
