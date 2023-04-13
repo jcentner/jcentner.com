@@ -1,46 +1,65 @@
 /* CSS HEX */
 :root {
-	--cal-poly-green: #2f4b26ff;
-	--timberwolf: #dbd6d2ff;
-	--blue-crayola: #2176ffff;
-	--celestial-blue: #33a1fdff;
-	--dim-gray: #635f59ff;
+	--eerie-black: #24231fff;
+	--silver: #c8c3bdff;
+	--isabelline: #f0efedff;
+	--amaranth-purple: #ab2346ff;
+	--cerulean: #437f97ff;
 }
 
-/* Sections */
-#bio, #projects {
-    margin-top: 4rem;
-    padding-top: 4rem;
-}
-
-#projects {
-	margin-bottom: 2rem;
-	padding-bottom: 2rem;
-}
 
 /* Nav */
 .navbarScroll.navbarDarken {
-	background-color: var(--celestial-blue);
+	background-color: var(--cerulean);
+}
+.nav-text {
+	color: var(--eerie-black);
 }
 
 /* Home carousel, text */
 .carousel_container {
-    max-width: 60%;
+    max-width: 75%;
     margin: 0 auto;
 	margin-top: 30px;
     margin-bottom: 30px;
     padding-top: 30px;
 }
-.carousel_fit .carousel-item{
-	height: 70vh;
+
+/* wider */
+@media (min-aspect-ratio: 1/1) {
+	.carousel_fit .carousel-item{
+		height: 80vh;
+	}
+	
+	/* Section Spacing */
+	#bio, #projects {
+    	margin-top: 4rem;
+    	padding-top: 4rem;
+	}
+
+	#projects {
+		margin-bottom: 2rem;
+		padding-bottom: 2rem;
+	}
 }
+
+/* taller */
+@media (max-aspect-ratio: 1/1) {
+	#bio, #projects {
+		margin-top: 1rem;
+		padding-top: 1rem;
+	}
+
+	#projects {
+		margin-bottom: 1rem;
+		padding-bottom: 1rem;
+	}
+}
+
 .carousel_image {
 	max-height: 100%;
 	width: auto;
 	object-fit: contain;
-}
-.home_desc {
-	font-size: 2rem;
 }
 .home_text {
 	text-align: center;
