@@ -20,14 +20,24 @@
 
 /* Nav */
 .navbarScroll.navbarDarken {
-	background-color: var(--blue-crayola);
+	background-color: var(--celestial-blue);
 }
 
 /* Home carousel, text */
-/* .home_image {} when add carousel format here*/
-
-.home_title {
-	font-size: 4.5rem;
+.carousel_container {
+    max-width: 60%;
+    margin: 0 auto;
+	margin-top: 30px;
+    margin-bottom: 30px;
+    padding-top: 30px;
+}
+.carousel_fit .carousel-item{
+	height: 70vh;
+}
+.carousel_image {
+	max-height: 100%;
+	width: auto;
+	object-fit: contain;
 }
 .home_desc {
 	font-size: 2rem;
@@ -45,10 +55,15 @@
 }
 
 /* Projects */
-.projectContent.card {
+.card {
     height: 280px;
+}
+.card:hover {
+    border: 1px solid #008000;
+}
+.card-btn {
     cursor: pointer;
-  }
+}
 .projects {
     font-size: 36px;
     text-align: center;
@@ -57,8 +72,10 @@
 .card-title {
     text-align: center;
 }
-.projectContent:hover {
-    border: 1px solid #008000;
+.card-img-top {
+	max-height: 200px;
+	width: auto;
+	object-fit: cover;
 }
 
 /* Socials */

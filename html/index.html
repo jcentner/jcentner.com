@@ -36,8 +36,8 @@
 			</symbol>
 		</svg>
 
-		<!-- Navbar --> <!-- TODO: apply styles/colors to fit theme -->
-		<nav class="navbar navbar-expand-lg fixed-top navbarScroll navbar-dark">
+		<!-- Navbar -->
+		<nav class="navbar navbar-expand-lg fixed-top navbarScroll">
 			<div class="container">
 				<a class="navbar-brand" href="#">Jacob Centner</a>
   				<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
@@ -59,38 +59,42 @@
         	</div>
     	</nav>
 
-		<!-- Home --> <!-- TODO: replace with carousels (vary # of images shown by screen size) -->
+		<!-- Home -->
 		<section id="home">
 			<div class="container-fluid">
 				<div class="row">
-					<div class="col-md-12 home_text">
-						<div id="home_carousel" class="caoursel slide" data-bs-ride="carousel">
-							<div class="carousel-inner">
- 	        					<div class="carousel-item active">
-    	                       	<img src="path/to/image1.jpg" class="d-block w-100" alt="Image 1">
-                   		    </div>
-	                        <div class="carousel-item">
-   		                         <img src="path/to/image2.jpg" class="d-block w-100" alt="Image 2">
-        	                </div>
-            	            <div class="carousel-item">
-                	            <img src="path/to/image3.jpg" class="d-block w-100" alt="Image 3">
-                    	    </div>
-                        	<div class="carousel-item">
-                            	<img src="path/to/image4.jpg" class="d-block w-100" alt="Image 4">
-	                        </div>
-    	                    <div class="carousel-item">
-        	                    <img src="path/to/image5.jpg" class="d-block w-100" alt="Image 5">
-            	            </div>
-                	    </div>
-                    	<button class="carousel-control-prev" type="button" data-bs-target="#carouselExample" data-bs-slide="prev">
-                        	<span class="carousel-control-prev-icon" aria-hidden="true"></span>
-	                        <span class="visually-hidden">Previous</span>
-    	                </button>
-        	            <button class="carousel-control-next" type="button" data-bs-target="#carouselExample" data-bs-slide="next">
-            	            <span class="carousel-control-next-icon" aria-hidden="true"></span>
-                			<span class="visually-hidden">Next</span>
-                   		</button>
-               		</div>
+					<div class="col-md-12">
+						<div class="carousel_container">
+							<div id="home_carousel" class="carousel slide carousel_fit" data-bs-ride="carousel">
+								<div class="carousel-inner">
+	 	        					<div class="carousel-item active">
+	    	            	    	   	<img src="./images/jc.jpg" class="d-block w-100 carousel_image" alt="Image 1">
+	    	               		    </div>
+		    	        	        <div class="carousel-item">
+   							            <img src="./images/jc.jpg" class="d-block w-100 carousel_image" alt="Image 2">
+        			                </div>
+        	    		   	        <div class="carousel-item">
+    	            	    	        <img src="./images/jc.jpg" class="d-block w-100 carousel_image" alt="Image 3">
+		                	   	    </div>
+    	                   			<div class="carousel-item">
+        	            	    	   	<img src="./images/jc.jpg" class="d-block w-100 carousel_image" alt="Image 4">
+		        	    	        </div>
+    		        	            <div class="carousel-item">
+        			       	            <img src="./images/jc.jpg" class="d-block w-100 carousel_image" alt="Image 5">
+        		    	       	    </div>
+    	   			       	    </div>
+	            		       	<button class="carousel-control-prev" type="button" data-bs-target="home_carousel" data-bs-slide="prev">
+                        			<span class="carousel-control-prev-icon" aria-hidden="true"></span>
+	               	    		    <span class="visually-hidden">Previous</span>
+    	            	    		</button>	        	            <button class="carousel-control-next" type="button" data-bs-target="#home_carousel" data-bs-slide="next">
+	   	        		            <span class="carousel-control-next-icon" aria-hidden="true"></span>
+    	   	    	    			<span class="visually-hidden">Next</span>
+        		   	       		</button>
+    	    	       		</div>
+						</div>
+					</div>
+					<br>
+					<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 home_text">
 						<h2 class="home_title">Hi, I'm Jake</h2>
 						<p class="home_desc">I'm a software developer and entrepreneur tackling problems with an interdisciplinary approach</p>
 					</div>
@@ -105,10 +109,12 @@
             	<h1 class="text-center">Bio</h1>
             	<div class="row mt-4">
                 	<div class="col-lg-4">
+						<br>
                     	<img src="images/jc.jpg" class="bio_image" alt="">
                 	</div>
 
                 	<div class="col-lg-8">
+						<br>
                     	<p>My academic background is heavy in math, modeling, and research. During my Master's, I taught at the UW Emerging Technologies lab (Android, VR in Unity3D, Robotics) and researched blockchain, cryptography, and secure hardware design at the UW Blockchain Lab.
 						</p>
 						<p>Since then, I've worked at startups effectively applying enterprise-grade AI/ML and blockchain. At SturdyAI, we reduced millions of B2B communications down to actionable signals; I worked with their Postgres databases, Python backend, and AI/ML with Python libraries. Next, TruckCoinSwap put me through the meatgrinder of tech startups and I wore too many hats to count! The token required deep dives into finance and economics and I fleshed out my full-stack as we built our app. OCR, blur detection, and image processing power TCS's pipeline. I've earned an education in marketing, biz dev, venture capital, management, and more from the school of hard knocks (and fantastic mentors).
@@ -118,7 +124,7 @@
                         	</p>
                     	</div>
                     	<div class="row mt-3">
-                        	<div class="col-md-6">
+                        	<div class="col-md-4">
                             	<ul>
                                 	<li>Go</li>
                                 	<li>Python</li>
@@ -127,7 +133,7 @@
 									<li>C/C++/C#</li>
                             	</ul>
                         	</div>
-                        	<div class="col-md-6">
+                        	<div class="col-md-4">
                             	<ul>
                                 	<li>Tensorflow, scikit-learn</li>
 									<li>Docker, Docker Compose</li>
@@ -143,45 +149,45 @@
     	</section>
 
 
-		<!-- Projects --> <!-- TODO: apply styles/colors -->
+		<!-- Projects -->
 	    <section id="projects">
         	<div class="container mt-3">
             	<h1 class="text-center">Projects</h1>
             	<div class="row">
                 	<div class="col-lg-4 mt-4">
-                    	<div class="card projectContent">
-                        	<img class="card-img-top" src="images/jcentnercom.jpg" alt="Card image" style="width:100%">
+                    	<div class="card">
+                        	<img class="card-img-top" src="images/jcentnercom.jpg" alt="Card image">
                         	<div class="card-body">
                             	<h4 class="card-title">jcentner.com</h4>
 								<p class="card-text">Full-stack responsive portfolio website using AWS EC2, nginx, Go, Postgres, JavaScript, and Bootstrap.</p>
                             	<div class="text-center">
-                                	<a href="https://github.com/jcentner/jcentner.com/" class="btn btn-success">Github Repo</a>
+                                	<a href="https://github.com/jcentner/jcentner.com/" class="btn card-btn btn-success">Github Repo</a>
                             	</div>
                         	</div>
                     	</div>
                 	</div>
 
         	        <div class="col-lg-4 mt-4">
-            	        <div class="card projectContent">
-                	        <img class="card-img-top" src="./images/chromedino.gif" alt="Card image" style="width:100%">
+            	        <div class="card">
+                	        <img class="card-img-top" src="./images/chromedino.gif" alt="Card image">
                     	    <div class="card-body">
                         	    <h4 class="card-title">Chrome Dino</h4>
 								<p class="card-text">AI agent that plays chrome dino implemented with a CNN in Python, Tensorflow, OpenCV, Selenium, and Jupyter.</p>
                             	<div class="text-center">
-                                	<a href="https://github.com/jcentner/chrome-dino/" class="btn btn-success">Github Repo</a>
+                                	<a href="https://github.com/jcentner/chrome-dino/" class="btn card-btn btn-success">Github Repo</a>
                             	</div>
                 	        </div>
             	        </div>
         	        </div>
 
         	        <div class="col-lg-4 mt-4">
-            	        <div class="card projectContent">
-                	        <img class="card-img-top" src="images/pod.jpg" alt="Card image" style="width:100%">
+            	        <div class="card">
+                	        <img class="card-img-top" src="images/pod.jpg" alt="Card image">
                     	    <div class="card-body">
                         	    <h4 class="card-title">Podcast</h4>
-								<p class="card-text">Podcast Description</p>
+								<p class="card-text">Coming soon!</p>
                             	<div class="text-center">
-                                	<a href="#" class="btn btn-success">Link</a>
+                                	<a href="#" class="btn card-btn btn-success">Link</a>
                             	</div>
                         	</div>
                     	</div>
