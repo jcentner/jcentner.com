@@ -28,7 +28,7 @@
 /* wider */
 @media (min-aspect-ratio: 1/1) {
 	.carousel_fit .carousel-item{
-		height: 80vh;
+		height: 70vh;
 	}
 	
 	/* Section Spacing */
