@@ -36,7 +36,7 @@ fetch("/api/v1/visit", {
 // get parameters
 
 var socialclick_data = {
-	button: ''
+	button: '',
 	page: window.location.href
 }
 
