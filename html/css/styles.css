@@ -12,8 +12,8 @@
 .navbarScroll.navbarDarken {
 	background-color: var(--cerulean);
 }
-.nav-text {
-	color: var(--eerie-black);
+nav .navbar-nav li a{
+  color: var(--eerie-black) !important;
 }
 
 /* Home carousel, text */
@@ -24,7 +24,6 @@
     margin-bottom: 30px;
     padding-top: 30px;
 }
-
 .carousel_image {
 	max-height: 100%;
 	width: auto;
@@ -68,7 +67,7 @@
 
 /* Socials */
 .fa-github:hover,.fa-twitter:hover,.fa-linkedin:hover{
-    color: #008000;
+    cursor: pointer;
 }
 
 /* all media tags */
@@ -101,5 +100,11 @@
 		margin-bottom: 1rem;
 		padding-bottom: 1rem;
 	}
+
+	.bio_image {
+		display: block;
+		margin-left: auto;
+		margin-right: auto;
+		width: 70%;
 }
 
