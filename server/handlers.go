@@ -74,3 +74,31 @@ func VisitHandler(c *gin.Context) {
 		"visit_id": fmt.Sprintf("%q", id),
 	})
 }
+
+// SocialclickHandler inserts a new row into the Socialclick table
+// r.POST("/api/v1/socialclick", SocialclickHandler
+
+func SocialclickHandler(c *gin.Context) {
+
+	// get client IP
+	ip := c.Request.Header.Get("X-Forwarded-For")
+
+	//sql and perform insert, returning the new socialclick_id
+	statement := "insert into socialclicks ( visitor_ip ) values ( $1 ) returning ( socialclick_id )"
+
+	row := conn.QueryRow(ctx, statement, ip)
+
+	// check response for id
+	// PGX pool closes connection on row.Scan
+	var id string
+	if err = row.Scan(&id); err != nil {
+		fmt.Printf("Error in reading response from insert query (SocialclickHandler): %s\n", err)
+		c.AbortWithError(http.StatusBadRequest /*400*/, err)
+		return
+	}
+
+	c.JSON(http.StatusOK, gin.H{
+		"status":         "success",
+		"socialclick_id": fmt.Sprintf("%q", id),
+	})
+}

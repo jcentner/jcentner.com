@@ -2,8 +2,25 @@
 
 : build migration script that runs all migration SQL files
 
+: edit pg deployment to also insert data from a dump, or just use pg_dump and pg_restore for this
+
 : build deployment scripts for go and nginx
 
 : ip_data project for ver0.2.0
     
+: use stored procedure in postgres to ensure safety on api call inserts (e.g. "button" for "socialvisits" can only be "twitter," "github," or "linkedin"
+
+: add some api security? 
+
 remember to make run go server after changes
+
+
+
+
+
+handlers needs "button" and "page" from javascript
+javascript needs to add onclick handler to socials icons, which sends which button it is to the api (also page)
+pg needs "page" field
+	also in create tables and load data
+	also in migration
+	

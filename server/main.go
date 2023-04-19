@@ -71,6 +71,10 @@ func main() {
 
 	r.POST("/api/v1/visit", VisitHandler) // handlers.go
 
+	// --- socialclick ---
+
+	r.POST("/api/v1/socialclick", SocialclickHandler)
+
 	// ----------------------------------------------------------------------
 
 	r.Run(*HostPort) // listen and serve on HostPort (0.0.0.0:9001)
