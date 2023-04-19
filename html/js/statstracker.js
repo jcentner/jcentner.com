@@ -35,8 +35,8 @@ fetch("/api/v1/visit", {
 
 // get parameters
 
-const socialclick_data = {
-	button: 
+var socialclick_data = {
+	button: ''
 	page: window.location.href
 }
 
@@ -45,6 +45,23 @@ const socialIcons = document.querySelectorAll('.socialclick-icon')
 socialIcons.forEach((icon) => {
 	icon.addEventListener('mousedown', (event) => {
 		if (event.button === 0 || event.button === 2) {
+			
+			const clickedElement = event.target;
+
+			// what icon was clicked?
+
+			switch(clickedElement.attr('href')) {
+				case "https://twitter.com/JacobCentner": 
+					socialclick_data.button = 'twitter';
+					break;
+				case "https://linedin.com/in/jacob-centner/": 
+					socialclick_data.button = 'linkedin';
+					break;
+				case "https://github.com/jcentner/": 
+					socialclick_data.button = 'github';
+					break;
+			}
+
 			fetch("/api/v1/socialclick", {
 				method: "POST",
 				header: {
