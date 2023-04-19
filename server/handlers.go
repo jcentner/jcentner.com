@@ -87,7 +87,8 @@ func SocialclickHandler(c *gin.Context) {
 
 	// get json data from api call
 	var data SocialclickData
-	if err := c.BindJSON(&data); err != nil {
+	var err error
+	if err = c.BindJSON(&data); err != nil {
 		c.AbortWithError(http.StatusNotAcceptable /*406*/, err)
 		return
 	}
