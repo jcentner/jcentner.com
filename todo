@@ -1,13 +1,9 @@
-1: finish frontend
-	- colors
+: add build target options in makefile under various options for fun
 
-1.5: add build target options in makefile under various options for fun
+: build migration script that runs all migration SQL files
 
-2: build migration script that runs all migration SQL files
+: build deployment scripts for go and nginx
 
-3: build deployment scripts for go and nginx
-
-4: ip_data project for ver0.2.0
+: ip_data project for ver0.2.0
     
-do a refactor of version stuff: forget about everything except deployment, let git commits handle versioning. Do a git tag release thing on a version that works.
 remember to make run go server after changes
