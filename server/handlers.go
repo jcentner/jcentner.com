@@ -80,11 +80,23 @@ func VisitHandler(c *gin.Context) {
 
 func SocialclickHandler(c *gin.Context) {
 
+	type SocialclickData struct {
+		Button string `json:"button" binding:"required"`
+		Page   string `json:"page" binding:"required"`
+	}
+
+	// get json data from api call
+	var data SocialclickData
+	if err := c.BindJSON(&data); err != nil {
+		c.AbortWithError(http.StatusNotAcceptable /*406*/, err)
+		return
+	}
+
 	// get client IP
 	ip := c.Request.Header.Get("X-Forwarded-For")
 
 	//sql and perform insert, returning the new socialclick_id
-	statement := "insert into socialclicks ( visitor_ip ) values ( $1 ) returning ( socialclick_id )"
+	statement := "insert into socialclicks ( visitor_ip, button, page ) values ( $1, $2, $3 ) returning ( socialclick_id )"
 
 	row := conn.QueryRow(ctx, statement, ip)
 

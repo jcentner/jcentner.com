@@ -1,10 +1,14 @@
-: add build target options in makefile under various options for fun
+: add build targets in makefile under various options for fun
 
 : build migration script that runs all migration SQL files
 
-: edit pg deployment to also insert data from a dump, or just use pg_dump and pg_restore for this
+: edit pg deployment to also insert data from a dump
+
+: chron a thing that does a regular pg_dump and pushes somewhere
 
 : build deployment scripts for go and nginx
+
+: build master deployment script
 
 : ip_data project for ver0.2.0
     
