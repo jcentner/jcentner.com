@@ -22,9 +22,7 @@ remember to make run go server after changes
 
 
 
-handlers needs "button" and "page" from javascript
 javascript needs to add onclick handler to socials icons, which sends which button it is to the api (also page)
-pg needs "page" field
-	also in create tables and load data
-	also in migration
-	
+make sure that this actually works - if you navigate away does it actually call it?
+	may need to make the icons not links?
+	or track on hover instead of on click?
