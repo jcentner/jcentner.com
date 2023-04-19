@@ -1,12 +1,5 @@
 1: finish frontend
-	- fix projects grid formatting at halfHD
-	- navbar text size at large resolutions
-	- navbar mobile menu doesn't open, fix js
-	- add images for carousel (at WY testimony, TCS images, cello)
-	- add images for project cards; remove gif, cpu intense
 	- colors
-	- get rid of carousel? or keep? 
-	- ask phil about favicon
 
 1.5: add build target options in makefile under various options for fun
 
